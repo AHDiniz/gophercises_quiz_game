@@ -1,20 +1,11 @@
 package main
 
 import (
-	"os"
+	"flag"
 )
 
-// If the error given is not nil, the program will be aborted
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
 func main() {
-	// Opening the file:
-	input := "problems.csv"
-	f, err := os.Open(input)
-	check(err)      // Checking for errors
-	defer f.Close() // Making the file close at the end of the execution
+	csvFile := flag.String("csv", "problems.csv", "a csv file in the format 'question,answer'")
+	flag.Parse()
+	_ = csvFile
 }
